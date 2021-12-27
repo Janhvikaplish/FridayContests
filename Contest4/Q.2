@@ -25,8 +25,12 @@ class Solution {
        
        visited[i][j]=true;
        helper(arr,i-1,j,visited);
+       helper(arr,i-1,j+1,visited);
        helper(arr,i,j+1,visited);
-       helper(arr,i,j-1,visited);
+       helper(arr,i+1,j+1,visited);
        helper(arr,i+1,j,visited);
+       helper(arr,i+1,j-1,visited);
+       helper(arr,i,j-1,visited);
+       helper(arr,i-1,j-1,visited);
    }
 }
