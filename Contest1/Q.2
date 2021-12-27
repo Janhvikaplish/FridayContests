@@ -1,0 +1,63 @@
+/* Similar to 2 Sum
+
+Two friends like to pool their money and go to the ice cream parlor. They always choose two distinct flavors and they spend all of their money.
+
+Given a list of prices for the flavors of ice cream, select the two that will cost all of the money they have.
+
+Example.  
+target= 6 cost=[1,3,4,5,6]
+
+The two flavors that cost  and  meet the criteria. Using 1-based indexing, they are at 1 indices 4 and .
+
+*/
+
+
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        
+        int n = sc.nextInt();
+        for(int k = 0; k < n; k++){
+            int cost = sc.nextInt();
+            int size = sc.nextInt();
+            int [] p = new int[size+1];
+        
+            for(int i = 1; i <= size;i++)p[i] = sc.nextInt();
+            
+            // HashMap Approch
+            HashMap<Integer, Integer> hp=new HashMap<>();
+            for(int i=1;i<=size;i++)
+            {
+                int x=cost-p[i];
+                if(hp.containsKey(x)){
+                  System.out.println(hp.get(x)+" "+ i);
+                  break;
+                  }
+                else
+                  hp.put(p[i], i);
+            }      
+                  
+            
+            
+        /*
+            // O(n^2) Approch
+            for(int i = 1; i <= size; i++){
+                for(int j = i+1; j <= size; j++){
+                    if(p[i]+p[j] == cost){
+                        System.out.println(i + " " + j);
+                        break;
+                    }
+                }
+            }
+        */
+        }
+        sc.close();
+    }
+}
