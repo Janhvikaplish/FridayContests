@@ -1,0 +1,58 @@
+/*
+Left Rotate 
+A left rotation operation on an array of size  shifts each of the array's elements  unit to the left. Given an integer, , rotate the array that many steps left and return the result.
+
+eg:
+arr=[1,2,3,4,5]
+d=2
+
+arr=[3,4,5,1,2]
+
+*/
+
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+        int N = scan.nextInt();
+        int n = scan.nextInt();
+        int[] A = new int[N];
+        for (int i=0; i<N; ++i) {
+            A[i] = scan.nextInt();
+        }
+        
+        leftRotate(A,N,n)
+        /*
+        for (int i=0; i<n; ++i) {
+            rotateArray(A);
+        }
+        for (int a : A) {
+            System.out.print(a+" ");
+        }
+        System.out.println("");
+        */
+    }
+    private static void leftRotate(int arr[], int n, int k)
+    {
+        /* To get the starting point of
+        rotated array */
+        int mod = k % n;
+ 
+        // Prints the rotated array from
+        // start position
+        for (int i = 0; i < n; ++i)
+            System.out.print(arr[(i + mod) % n] + " ");
+ 
+        System.out.println();
+    }
+    private static void rotateArray(int[] A) {
+        int t = A[0];
+        for (int i=0; i<A.length-1; ++i) {
+            A[i] = A[i+1];
+        }
+        A[A.length-1] = t;
+    }
+}
