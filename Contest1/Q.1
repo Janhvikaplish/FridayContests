@@ -1,0 +1,50 @@
+/*
+COUNT THE NUMBER OF NON-DECREASING SUBARRAYS
+
+Given an array count the number of subarrays of array AA which are non-decreasing.
+
+EXAMPLE:
+
+1,4,2,3
+
+Count:[1,1] [4,4] [2,2] [3,3] [1,4] [2,3]
+*/
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+public class Main
+{
+	public static void main (String[] args)
+	{
+		Scanner sc=new Scanner(System.in);
+		int t = sc.nextInt();
+		
+		while(t-- > 0){
+		    int s = sc.nextInt();
+		   
+		    long a[]=new long [s];
+		    for(int i=0;i<s;i++){
+		        a[i] = sc.nextLong();
+		    }
+		    
+		    long sum=0;
+		   long temp[]=new long[s];
+		   
+		   for(int i=1;i<s;i++){
+		       if(a[i]>=a[i-1]){
+		           temp[i] = temp[i-1]+1;
+		       }
+		   }
+	         sum += s;
+		   for(int i=0;i<s;i++){
+		       sum += temp[i];
+		   }
+		   System.out.println(sum);
+		    
+		}
+		
+		}
+    
+}
