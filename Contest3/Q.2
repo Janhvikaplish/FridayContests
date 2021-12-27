@@ -1,0 +1,54 @@
+/*
+Find Minimum Number 
+There are KK pieces of cakes. Mr. Takahashi would like to eat one cake per day, taking KK days to eat them all.
+
+There are TT types of cake, and the number of the cakes of type ii (1 ≤ i ≤ T1≤i≤T) is a_i
+Eating the same type of cake two days in a row would be no fun, so Mr. Takahashi would like to decide the order for eating cakes that minimizes the number of days on which he has to eat the same type of cake as the day before.
+
+Compute the minimum number of days on which the same type of cake as the previous day will be eaten.
+eg: 6 3
+    1 4 1
+    
+    1
+    
+*/    
+
+
+
+import java.util.*;
+public class Main{
+    public static void main(String args[])
+    {
+        Scanner sc=new Scanner(System.in);
+
+        int k=sc.nextInt();
+        int t=sc.nextInt();
+
+        PriorityQueue<Integer>p=new PriorityQueue<>(Comparator.reverseOrder());
+
+        for(int i=0;i<t;i++)
+        {
+            int ele=sc.nextInt();
+            p.add(x);
+        }
+        while(p.size()>1)
+        {
+            int first=p.poll();
+            int second=p.poll();
+            first--;
+            second--;
+            
+            if(first!=0)
+            p.add(first);
+            
+            if(second!=0)
+            p.add(second);
+        }
+      if(p.size()==0)
+      {
+       System.out.println(0); 
+      }
+      else
+        System.out.println(p.peek()-1);
+    }
+}
