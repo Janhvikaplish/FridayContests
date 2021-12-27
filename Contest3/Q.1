@@ -1,0 +1,54 @@
+/*
+Print Maximum number 
+You are given an array of NN integers as input.
+﻿You have to do the following operations :
+
+Print the maximum element in the array.
+Take the maximum element in the array and divide by 2 (rounded down) and put it in the array again, i.e , take the max element x and put into array \lfloor x/2 \rfloor⌊x/2⌋ if \lfloor x/2 \rfloor \neq 0⌊x/2⌋
+
+=0. If there are multiple max elements with same value , you can choose any.
+Continue this operation as long as you have non-zero elements.
+
+eg: 1 2 15
+    15 7 3 2 1 1 1
+    
+*/    
+
+
+
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+
+class Main
+{
+	public static void main (String[] args) throws java.lang.Exception
+	{
+		Scanner sc = new Scanner(System.in);
+		int t = sc.nextInt();
+		while(t-- > 0){
+		   int n = sc.nextInt();
+		   int arr[] = new int[n];
+		   for(int i = 0; i < n; i++){
+		      arr[i] = sc.nextInt();
+		   }
+		   PriorityQueue<Integer> pq = new PriorityQueue<Integer>((a,b) -> b - a);
+		   for(int i = 0; i < n; i++){
+		      pq.add(arr[i]);
+		   }
+		   StringBuffer str = new StringBuffer();
+		   
+		   while(!pq.isEmpty()){
+		      int num = pq.remove();
+		      if(num != 0){
+		         str.append(num + " ");
+		         if((num/2) != 0)
+		            pq.add(num/2);
+		      }
+		   }
+		   System.out.println(str);
+		}
+	}
+}
