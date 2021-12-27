@@ -1,0 +1,49 @@
+/*
+Nested Braces 
+
+A new session on programming has started. And students are taught different brackets available in programming languages like curly braces{ }, parenthesis  ( ) , square brackets [ ].
+On writing a statement they got confused in nesting of braces , brackets and parenthesis.
+As teacher is busy in helping other students as a techning assistent you have to help the students out of the confusion by telling them whether the nesting of different braces are done properly or not. 
+
+*/
+
+import java.util.*;
+import java.io.*;
+import java.lang.*;
+
+public class Main {
+
+	public static void main(String[] args) throws Exception {
+		Scanner sc= new Scanner(System.in);
+		int t = sc.nextInt();
+		
+		while(t-- > 0) {
+			String str = sc.next();
+			Stack<Character> stack = new Stack<>();
+			
+			boolean flag = true;
+			
+			for(char c : str.toCharArray()) {
+				if(c == '(' || c == '{' || c == '[') {
+					stack.push(c);
+				}
+				else if(!stack.isEmpty() && ((c == ')' && stack.peek() =='(')  || (c == '}' && stack.peek() =='{') || (c ==']' && stack.peek() =='[' ))) {
+					stack.pop();
+				}
+				else {
+					flag = false;
+				}
+			}
+			
+			if(stack.size() > 0) {
+				flag = false;
+			}
+			if(flag) {
+				System.out.println("yes");
+			}
+			else {
+				System.out.println("no");
+			}
+		}
+	}
+}
