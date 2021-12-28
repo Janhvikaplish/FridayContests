@@ -1,0 +1,50 @@
+/*
+ Count Number of Times
+ 
+ There is a collection of input strings and a collection of query strings. For each query string, determine how many times it occurs in the list of input strings. Return an array of the results.
+
+  Function Description
+  Complete the function matchingStrings in the editor below. The function must return an array of integers representing the frequency of occurrence of each query string in strings.
+  matchingStrings has the following parameters:
+  
+  string strings[n] - an array of strings to search
+  string queries[q] - an array of query strings
+  
+  Returns
+  int[q]: an array of results for each query
+*/
+
+
+import java.io.*;
+import java.math.*;
+import java.util.regex.*;
+import java.text.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        String a[]=new String[1000];
+        String b[]=new String[1000];
+        String str;
+        int i,n,q,c=0;
+        Scanner sc=new Scanner(System.in);
+        n=sc.nextInt();
+       for(i=0;i<n;i++)
+            a[i]=sc.next();
+        q=sc.nextInt();
+        while(q>0)
+        {
+           q=q-1;
+            c=0;
+           str=sc.next();
+            for(i=0;i<n;i++)
+            {
+               if(a[i].equals(str)) 
+                   c++;
+            }
+            System.out.println(c);
+        }
+        
+     }
+}
