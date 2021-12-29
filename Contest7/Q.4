@@ -1,0 +1,67 @@
+/*
+Minimum Knight moves !!!
+
+Anjali and Nakul are good friends. They both had a quarrel recently while playing chess. Nakul wants to know the minimum number of moves a knight takes to reach from one square to another square of a chess board (8X8). Nakul is brilliant and he had already written a program to solve the problem. Nakul wants to know whether Anjali can do it. Anjali is very weak in programming. Help her to solve the problem.
+A knight can move in the shape of an "L" in a chessboard - two squares either forward, backward, left, or right and then one square to its left or right. A knight move is valid if it moves as mentioned above and it is within the boundary of the chessboard (8 X 8).
+*/
+
+
+import java.io.*;
+import java.util.*;
+class Main {
+
+
+       static class Cord{
+		int x;
+                int y;
+                int distance;
+		
+		public Cord(int x, int y, int distance){
+			this.x = x;
+			this.y = y;
+			this.distance = distance;
+		}
+	}
+	public static void main(String[] args)throws Exception{
+		Scanner sc = new Scanner(System.in);
+		StringBuilder string = new StringBuilder();
+		int t = sc.nextInt();
+		for(int i = 0; i < t; i++){
+			boolean[][] visited = new boolean[8][8];
+			String scr = sc.next();
+			String des = sc.next();
+			
+			int Xscr = scr.charAt(0) - 'a';
+			int Yscr = Integer.parseInt(scr.substring(1))-1;
+			
+			int Xdes = des.charAt(0) - 'a';
+			int Ydes = Integer.parseInt(des.substring(1))-1;
+			
+			Queue<Cord> q = new LinkedList<Cord>();
+			Cord curr = null;
+			int[] xval = {2, 2, -2, -2, 1, 1, -1, -1};
+			int[] yval = {1, -1, 1, -1, 2, -2, 2, -2};
+			q.add(new Cord(Xscr, Yscr, 0));
+			
+			while(!q.isEmpty()){
+				curr = q.remove();
+				if(curr.x == Xdes && curr.y == Ydes){
+					break;
+				}
+				
+				for(int j = 0; j < 8; j++){
+					int x = curr.x + xval[j];
+					int y = curr.y + yval[j];
+					
+					if(x >= 0 && x < 8 && y >= 0 && y < 8 && !visited[x][y]){
+						visited[x][y] = true;
+						q.add(new Cord(x, y, curr.distance+1));
+					}
+				}
+			}
+			
+			string.append(curr.distance + "\n");
+		}
+		System.out.print(string);
+	}
+}
